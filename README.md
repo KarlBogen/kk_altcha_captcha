@@ -2,7 +2,7 @@
 
 **Ein Systemmodul für die *mod*ified eCommerce Shopsoftware**
 
-Die Erweiterung intergriert das Altcha Captcha in die Shopsoftware.
+Die Erweiterung integriert das Altcha Captcha in die Shopsoftware.
 
 Es müssen keine Shop- und Templatedateien geändert werden.
 
