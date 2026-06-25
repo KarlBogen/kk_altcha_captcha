@@ -44,15 +44,7 @@ class kk_altcha_captcha extends modified_captcha
     return false;
   }
 
-  public function get_image_code()
-  {
-    		$linktitle = '';
-		if (parse_multi_language_value(MODULE_SYSTEM_KK_ALTCHA_FORMFIELD_TEXT, $_SESSION['language_code']) != '') {
-			$linktitle = parse_multi_language_value(MODULE_SYSTEM_KK_ALTCHA_FORMFIELD_TEXT, $_SESSION['language_code']);
-		}
-
-    return $linktitle;
-  }
+  public function get_image_code() {}
 
   public function get_input_code()
   {
@@ -66,21 +58,9 @@ class kk_altcha_captcha extends modified_captcha
     }
     $scripts .= '<script async defer src="' . KK_ALTACHA_DIR_TMPL . '/javascript/altcha.min.js" type="module"></script>' . PHP_EOL;
     if (is_file(DIR_FS_CATALOG . KK_ALTACHA_DIR_TMPL . '/javascript/altcha-' . $_SESSION["language_code"] . '.js')) {
-      $scripts .= '<script src="' . KK_ALTACHA_DIR_TMPL . '/javascript/altcha-' . $_SESSION["language_code"] . '.js" type="module"></script>' . PHP_EOL;
+      $scripts .= '<script async defer src="' . KK_ALTACHA_DIR_TMPL . '/javascript/altcha-' . $_SESSION["language_code"] . '.js" type="module"></script>' . PHP_EOL;
     }
-    $scripts .= '<altcha-widget
-                    auto="' . MODULE_SYSTEM_KK_ALTCHA_VERIFICATION_TRIGGER . '"
-                    challenge="' . DIR_WS_BASE . 'ajax.php/challenge?ext=kk_altcha"
-                    configuration=\'{"minDuration": ' . (int)MODULE_SYSTEM_KK_ALTCHA_MIN_VERIFICATION_TIME . '}\'
-                    display="' . MODULE_SYSTEM_KK_ALTCHA_LAYOUT_MODE . '"
-                    language="' . $_SESSION["language_code"] . '"
-                    name="altcha"
-                    ' . $hidelogo . '
-                    ' . $hidefooter . '
-                    theme="' . MODULE_SYSTEM_KK_ALTCHA_THEME . '"
-                    type="' . MODULE_SYSTEM_KK_ALTCHA_TYPE . '"
-                    workers="4"
-                  </altcha-widget>';
+    $scripts .= '<altcha-widget auto="' . MODULE_SYSTEM_KK_ALTCHA_VERIFICATION_TRIGGER . '" challenge="' . DIR_WS_BASE . 'ajax.php/challenge?ext=kk_altcha" configuration=\'{"minDuration": ' . (int)MODULE_SYSTEM_KK_ALTCHA_MIN_VERIFICATION_TIME . '}\' display="' . MODULE_SYSTEM_KK_ALTCHA_LAYOUT_MODE . '" language="' . $_SESSION["language_code"] . '" name="altcha" ' . $hidelogo . ' ' . $hidefooter . ' theme="' . MODULE_SYSTEM_KK_ALTCHA_THEME . '" type="' . MODULE_SYSTEM_KK_ALTCHA_TYPE . '" workers="4"></altcha-widget>';
     return $scripts;
   }
 }

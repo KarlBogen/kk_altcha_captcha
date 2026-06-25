@@ -40,8 +40,5 @@ define('MODULE_SYSTEM_KK_ALTCHA_TYPE_TITLE', 'Style of form field');
 define('MODULE_SYSTEM_KK_ALTCHA_TYPE_DESC', 'Visual style of form field ("checkbox", "native", "switch").<br>Default value: checkbox');
 define('MODULE_SYSTEM_KK_ALTCHA_THEME_TITLE', 'CSS-Themes');
 define('MODULE_SYSTEM_KK_ALTCHA_THEME_DESC', 'Different CSS files are loaded based on this setting. ("default", "aqua", "business", "caramel", "cupcake", "cyberpunk", "lime", "wireframe").<br>Default value: default');
-define('MODULE_SYSTEM_KK_ALTCHA_FORMFIELD_TEXT_TITLE', 'Individual description text Captcha');
-define('MODULE_SYSTEM_KK_ALTCHA_FORMFIELD_TEXT_DESC', 'A custom text for the CAPTCHA description can be specified here; if the field is left blank, a default text is used.<br>
-  Default value:<br>"Bitte best&auml;tigen Sie das n&auml;chste Eingabefeld!"<br>"Please confirm the next input field!"');
 
 define('MODULE_SYSTEM_KK_ALTCHA_FILES_MISS_TXT', 'The for this module necessary file %s is missing on the server! Please verify the upload of the for this module necessary files.');

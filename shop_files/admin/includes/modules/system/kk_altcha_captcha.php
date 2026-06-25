@@ -26,7 +26,7 @@ class kk_altcha_captcha
 
   public function __construct()
   {
-    $this->version = '1.0.0';
+    $this->version = '1.0.1';
     $this->code = 'kk_altcha_captcha';
     $this->title = MODULE_SYSTEM_KK_ALTCHA_TEXT_TITLE . ' © by <a href="https://github.com/KarlBogen" target="_blank" style="color: #e67e22; font-weight: bold;">Karl</a> - Version: ' . $this->version;
     $this->description = '';
@@ -81,7 +81,6 @@ class kk_altcha_captcha
     xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SYSTEM_KK_ALTCHA_HIDEFOOTER', 'false',  '6', '1', 'xtc_cfg_select_option(array(\'true\', \'false\'), ', now())");
     xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SYSTEM_KK_ALTCHA_TYPE', 'checkbox',  '6', '1', 'xtc_cfg_select_option(array(\'checkbox\', \'native\', \'switch\'), ', now())");
     xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SYSTEM_KK_ALTCHA_THEME', 'default',  '6', '1', 'xtc_cfg_select_option(array(\'default\', \'aqua\', \'business\', \'caramel\', \'cupcake\', \'cyberpunk\', \'lime\', \'wireframe\'), ', now())");
-    xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SYSTEM_KK_ALTCHA_FORMFIELD_TEXT', '',  '6', '1', 'xtc_cfg_input_email_language;MODULE_SYSTEM_KK_ALTCHA_FORMFIELD_TEXT', now())");
 
     xtc_db_query("UPDATE " . TABLE_CONFIGURATION . " SET configuration_value = 'kk_altcha_captcha' WHERE configuration_key = 'CAPTCHA_MOD_CLASS'");
   }
@@ -129,8 +128,7 @@ class kk_altcha_captcha
       'MODULE_SYSTEM_KK_ALTCHA_HIDELOGO',
       'MODULE_SYSTEM_KK_ALTCHA_HIDEFOOTER',
       'MODULE_SYSTEM_KK_ALTCHA_TYPE',
-      'MODULE_SYSTEM_KK_ALTCHA_THEME',
-      'MODULE_SYSTEM_KK_ALTCHA_FORMFIELD_TEXT'
+      'MODULE_SYSTEM_KK_ALTCHA_THEME'
     );
 
     return $key;
@@ -147,9 +145,9 @@ class kk_altcha_captcha
     $dirs_and_files[] = $shop_path . 'includes/extra/ajax/kk_altcha.php';
     $dirs_and_files[] = $shop_path . 'includes/extra/captcha/kk_altcha.php';
     // lang
-    $dirs_and_files[] = $shop_path . 'lang/english/extra/admin/kk_altcha_captcha.php';
+    $dirs_and_files[] = $shop_path . 'lang/english/extra/admin/kk_altcha_catcha.php';
     $dirs_and_files[] = $shop_path . 'lang/english/modules/system/kk_altcha_captcha.php';
-    $dirs_and_files[] = $shop_path . 'lang/german/extra/admin/kk_altcha_captcha.php';
+    $dirs_and_files[] = $shop_path . 'lang/german/extra/admin/kk_altcha_catcha.php';
     $dirs_and_files[] = $shop_path . 'lang/german/modules/system/kk_altcha_captcha.php';
     // Templateverzeichnis
     $dirs_and_files[] = $shop_path . 'templates/' . CURRENT_TEMPLATE . '/altcha/javascript/altcha.min.js';
