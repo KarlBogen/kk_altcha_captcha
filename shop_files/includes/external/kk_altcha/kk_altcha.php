@@ -21,7 +21,7 @@ use AltchaOrg\Altcha\ServerSignature;
 use AltchaOrg\Altcha\Solution;
 use AltchaOrg\Altcha\VerifySolutionOptions;
 
-class kk_altcha
+class kk_altcha_modified
 {
 
     private $pbkdf2;

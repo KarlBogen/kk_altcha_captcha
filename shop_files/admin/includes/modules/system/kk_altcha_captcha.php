@@ -26,11 +26,10 @@ class kk_altcha_captcha
 
   public function __construct()
   {
-    $this->version = '1.0.1';
+    $this->version = '1.0.2';
     $this->code = 'kk_altcha_captcha';
     $this->title = MODULE_SYSTEM_KK_ALTCHA_TEXT_TITLE . ' © by <a href="https://github.com/KarlBogen" target="_blank" style="color: #e67e22; font-weight: bold;">Karl</a> - Version: ' . $this->version;
     $this->description = '';
-    //$this->description .= '<a class="button btnbox" style="text-align:center;" href="' . xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=' . $this->code . '&action=edit') . '">' . BUTTON_EDIT . '</a><br />';
     $this->description .= '<a class="button btnbox but_red" style="text-align:center;" onclick="return confirmLink(\'' . MODULE_SYSTEM_KK_ALTCHA_DELETE_CONFIRM . '\', \'\' ,this);" href="' . xtc_href_link(FILENAME_MODULE_EXPORT, 'set=system&module=' . $this->code . '&action=custom') . '">' . MODULE_SYSTEM_KK_ALTCHA_DELETE_BUTTON . '</a><br />';
     $this->description .= MODULE_SYSTEM_KK_ALTCHA_TEXT_DESCRIPTION;
     $this->sort_order = defined('MODULE_SYSTEM_KK_ALTCHA_SORT_ORDER') ? MODULE_SYSTEM_KK_ALTCHA_SORT_ORDER : 0;
@@ -39,7 +38,7 @@ class kk_altcha_captcha
 
     if (isset($_GET['module']) && $_GET['module'] == $this->code && isset($_GET['action']) && $_GET['action'] == 'save') {
       if ($_POST['configuration']['MODULE_SYSTEM_KK_ALTCHA_STATUS'] == 'true') {
-        xtc_db_query("UPDATE " . TABLE_CONFIGURATION . " SET configuration_value = 'kk_altcha_captcha' WHERE configuration_key = 'CAPTCHA_MOD_CLASS'");
+        xtc_db_query("UPDATE " . TABLE_CONFIGURATION . " SET configuration_value = 'kk_altcha' WHERE configuration_key = 'CAPTCHA_MOD_CLASS'");
       } else {
         xtc_db_query("UPDATE " . TABLE_CONFIGURATION . " SET configuration_value = 'modified_captcha' WHERE configuration_key = 'CAPTCHA_MOD_CLASS'");
       }
@@ -82,7 +81,7 @@ class kk_altcha_captcha
     xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SYSTEM_KK_ALTCHA_TYPE', 'checkbox',  '6', '1', 'xtc_cfg_select_option(array(\'checkbox\', \'native\', \'switch\'), ', now())");
     xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SYSTEM_KK_ALTCHA_THEME', 'default',  '6', '1', 'xtc_cfg_select_option(array(\'default\', \'aqua\', \'business\', \'caramel\', \'cupcake\', \'cyberpunk\', \'lime\', \'wireframe\'), ', now())");
 
-    xtc_db_query("UPDATE " . TABLE_CONFIGURATION . " SET configuration_value = 'kk_altcha_captcha' WHERE configuration_key = 'CAPTCHA_MOD_CLASS'");
+    xtc_db_query("UPDATE " . TABLE_CONFIGURATION . " SET configuration_value = 'kk_altcha' WHERE configuration_key = 'CAPTCHA_MOD_CLASS'");
   }
 
   public function update() {}

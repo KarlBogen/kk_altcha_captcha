@@ -11,7 +11,7 @@
 function kk_altcha()
 {
     require_once(DIR_FS_EXTERNAL . 'kk_altcha/kk_altcha.php');
-    $kk_altcha = new kk_altcha;
+    $kk_altcha = new kk_altcha_modified;
     $result = $kk_altcha->handleChallenge();
 
 

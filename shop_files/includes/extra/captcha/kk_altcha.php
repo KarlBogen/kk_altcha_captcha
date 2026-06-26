@@ -8,12 +8,7 @@
   Released under the GNU General Public License
 -------------------------------------------------------------- */
 
-// include needed function
-require_once(DIR_FS_EXTERNAL . 'GuzzleHttp/functions_include.php');
-require_once(DIR_FS_EXTERNAL . 'GuzzleHttp/Promise/functions_include.php');
-require_once(DIR_FS_EXTERNAL . 'GuzzleHttp/Psr7/functions_include.php');
-
-class kk_altcha_captcha extends modified_captcha
+class kk_altcha extends modified_captcha
 {
 
   protected static $_instance = null;
@@ -34,7 +29,7 @@ class kk_altcha_captcha extends modified_captcha
   {
 
     require_once(DIR_FS_EXTERNAL . 'kk_altcha/kk_altcha.php');
-    $res = new kk_altcha;
+    $res = new kk_altcha_modified;
     $result = $res->handleSubmit();
 
     if (!empty($result['verified']) && $result['verified'] === true) {
@@ -54,11 +49,11 @@ class kk_altcha_captcha extends modified_captcha
 
     $scripts = '';
     if (MODULE_SYSTEM_KK_ALTCHA_THEME != 'default' && is_file(DIR_FS_CATALOG . KK_ALTACHA_DIR_TMPL . '/css/themes/' . MODULE_SYSTEM_KK_ALTCHA_THEME . '.min.css')) {
-      $scripts .= '<link href="' . KK_ALTACHA_DIR_TMPL . '/css/themes/' . MODULE_SYSTEM_KK_ALTCHA_THEME . '.min.css" rel="stylesheet">';
+      $scripts .= '<link href="' . DIR_WS_BASE . KK_ALTACHA_DIR_TMPL . '/css/themes/' . MODULE_SYSTEM_KK_ALTCHA_THEME . '.min.css" rel="stylesheet">';
     }
-    $scripts .= '<script async defer src="' . KK_ALTACHA_DIR_TMPL . '/javascript/altcha.min.js" type="module"></script>' . PHP_EOL;
+    $scripts .= '<script async defer src="' . DIR_WS_BASE . KK_ALTACHA_DIR_TMPL . '/javascript/altcha.min.js" type="module"></script>' . PHP_EOL;
     if (is_file(DIR_FS_CATALOG . KK_ALTACHA_DIR_TMPL . '/javascript/altcha-' . $_SESSION["language_code"] . '.js')) {
-      $scripts .= '<script async defer src="' . KK_ALTACHA_DIR_TMPL . '/javascript/altcha-' . $_SESSION["language_code"] . '.js" type="module"></script>' . PHP_EOL;
+      $scripts .= '<script src="' . DIR_WS_BASE . KK_ALTACHA_DIR_TMPL . '/javascript/altcha-' . $_SESSION["language_code"] . '.js" type="module"></script>' . PHP_EOL;
     }
     $scripts .= '<altcha-widget auto="' . MODULE_SYSTEM_KK_ALTCHA_VERIFICATION_TRIGGER . '" challenge="' . DIR_WS_BASE . 'ajax.php/challenge?ext=kk_altcha" configuration=\'{"minDuration": ' . (int)MODULE_SYSTEM_KK_ALTCHA_MIN_VERIFICATION_TIME . '}\' display="' . MODULE_SYSTEM_KK_ALTCHA_LAYOUT_MODE . '" language="' . $_SESSION["language_code"] . '" name="altcha" ' . $hidelogo . ' ' . $hidefooter . ' theme="' . MODULE_SYSTEM_KK_ALTCHA_THEME . '" type="' . MODULE_SYSTEM_KK_ALTCHA_TYPE . '" workers="4"></altcha-widget>';
     return $scripts;
