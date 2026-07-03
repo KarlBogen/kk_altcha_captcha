@@ -26,7 +26,7 @@ class kk_altcha_captcha
 
   public function __construct()
   {
-    $this->version = '1.0.2';
+    $this->version = '1.0.3';
     $this->code = 'kk_altcha_captcha';
     $this->title = MODULE_SYSTEM_KK_ALTCHA_TEXT_TITLE . ' © by <a href="https://github.com/KarlBogen" target="_blank" style="color: #e67e22; font-weight: bold;">Karl</a> - Version: ' . $this->version;
     $this->description = '';
