@@ -48,6 +48,7 @@ class kk_altcha extends modified_captcha
     defined('KK_ALTACHA_DIR_TMPL') or define('KK_ALTACHA_DIR_TMPL', 'templates/' . CURRENT_TEMPLATE . '/altcha');
 
     $scripts = '';
+    $scripts .= '<noscript><div class="errormessage my_0 alert alert-danger">' . KK_ALTCHA_CAPTCHA_JS_MISSING . '</div></noscript>' . PHP_EOL;
     if (MODULE_SYSTEM_KK_ALTCHA_THEME != 'default' && is_file(DIR_FS_CATALOG . KK_ALTACHA_DIR_TMPL . '/css/themes/' . MODULE_SYSTEM_KK_ALTCHA_THEME . '.min.css')) {
       $scripts .= '<link href="' . DIR_WS_BASE . KK_ALTACHA_DIR_TMPL . '/css/themes/' . MODULE_SYSTEM_KK_ALTCHA_THEME . '.min.css" rel="stylesheet">';
     }

@@ -1,6 +1,8 @@
 UNRELEASED
 
 
+- noscript-Tag hinzugefügt mit Hinweis JavaScript muss aktiviert sein
+
 
 1.0.3 [03.07.2026]
 - Release 2.0.3 "altcha-org/altcha-lib-php"

@@ -8,4 +8,4 @@
   Released under the GNU General Public License
 -------------------------------------------------------------- */
 
-define('CFG_TXT_KK_ALTCHA', 'Altcha Captcha');
+define('KK_ALTCHA_CAPTCHA_JS_MISSING', 'Note: JavaScript is required for the security check. Please enable JavaScript in your browser to submit the form.');
