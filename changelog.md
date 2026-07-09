@@ -1,8 +1,10 @@
 UNRELEASED
 
 
-- noscript-Tag hinzugefügt mit Hinweis JavaScript muss aktiviert sein
 
+1.0.4 [09.07.2026]
+- Release 3.2.0 "altcha-org/altcha" - Ladereihenfolge der Sprachdateien wurde geändert
+- noscript-Tag hinzugefügt mit Hinweis JavaScript muss aktiviert sein
 
 1.0.3 [03.07.2026]
 - Release 2.0.3 "altcha-org/altcha-lib-php"
