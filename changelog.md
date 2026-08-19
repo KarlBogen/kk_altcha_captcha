@@ -1,8 +1,9 @@
 UNRELEASED
 
 
+- Release 3.2.2 "altcha-org/altcha" - Fix: theme attribute (widget types and HTML attribute)
 - Release 2.1.0 "altcha-org/altcha-lib-php"
-- Release 3.2.1 "altcha-org/altcha" - checkbox focus outline in safari
+- Release 3.2.1 "altcha-org/altcha" - Fix: checkbox focus outline in safari
 
 1.0.4 [09.07.2026]
 - Release 3.2.0 "altcha-org/altcha" - Ladereihenfolge der Sprachdateien wurde geändert
