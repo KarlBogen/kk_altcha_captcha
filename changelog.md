@@ -1,6 +1,8 @@
 UNRELEASED
 
 
+1.0.5 [20.09.2026]
+- Release 3.2.3 "altcha-org/altcha" - Fix: add rel=noopener attribute to external links
 - Release 3.2.2 "altcha-org/altcha" - Fix: theme attribute (widget types and HTML attribute)
 - Release 2.1.0 "altcha-org/altcha-lib-php"
 - Release 3.2.1 "altcha-org/altcha" - Fix: checkbox focus outline in safari
