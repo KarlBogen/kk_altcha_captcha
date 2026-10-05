@@ -60,9 +60,8 @@ class Altcha
             data: $params->data,
         );
 
-        $signature = $this->hmacSignatureSecret
-            ? $this->hmacHex($params->toCanonicalJson(), $this->hmacSignatureSecret)
-            : null;
+        $secret = $this->signatureSecret();
+        $signature = null !== $secret ? $this->hmacHex($params->toCanonicalJson(), $secret) : null;
 
         return new Challenge($params, $signature);
     }
@@ -104,9 +103,9 @@ class Altcha
         $payload = $options->payload;
         $params = $payload->challenge->parameters;
 
-        // Check expiration
-        if (null !== $params->expiresAt) {
-            if (time() > $params->expiresAt) {
+        // Check expiration: 0 means no expiry; fractional-second comparison, matching altcha-lib (JS)
+        if ($params->expiresAt) {
+            if ($params->expiresAt < microtime(true)) {
                 return new VerifySolutionResult(
                     verified: false,
                     expired: true,
@@ -115,23 +114,26 @@ class Altcha
             }
         }
 
-        // Verify challenge signature
-        if (null !== $this->hmacSignatureSecret) {
-            if (null === $payload->challenge->signature) {
-                return new VerifySolutionResult(
-                    verified: false,
-                    invalidSignature: true,
-                    time: microtime(true) - $startTime,
-                );
-            }
-            $expectedSignature = $this->hmacHex($params->toCanonicalJson(), $this->hmacSignatureSecret);
-            if (!hash_equals($expectedSignature, $payload->challenge->signature)) {
-                return new VerifySolutionResult(
-                    verified: false,
-                    invalidSignature: true,
-                    time: microtime(true) - $startTime,
-                );
-            }
+        // Verify challenge signature. Like altcha-lib (JS) there is no unsigned mode: a missing
+        // signature, or a verifier without a signature secret, can never verify.
+        $secret = $this->signatureSecret();
+        $signature = $payload->challenge->signature;
+        try {
+            $canonicalJson = $params->toCanonicalJson();
+        } catch (\JsonException) {
+            $canonicalJson = null; // e.g. invalid UTF-8 in parameters passed as a PHP array
+        }
+        if (
+            null === $secret
+            || null === $signature
+            || null === $canonicalJson
+            || !hash_equals($this->hmacHex($canonicalJson, $secret), $signature)
+        ) {
+            return new VerifySolutionResult(
+                verified: false,
+                invalidSignature: true,
+                time: microtime(true) - $startTime,
+            );
         }
 
         // Fast path: the challenge carries an HMAC of the raw derived key bytes. A mismatch is final
@@ -189,6 +191,14 @@ class Altcha
         $result = $algorithm->deriveKey($params, $saltBytes, $password);
 
         return $result->derivedKey;
+    }
+
+    /**
+     * An empty secret counts as unset, matching altcha-lib (JS).
+     */
+    private function signatureSecret(): ?string
+    {
+        return '' === $this->hmacSignatureSecret ? null : $this->hmacSignatureSecret;
     }
 
     private function hmacHex(string $data, string $key): string

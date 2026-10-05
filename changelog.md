@@ -2,8 +2,10 @@ UNRELEASED
 
 
 
+1.0.6 [05.10.2026]
+- Release 3.3.0 "altcha-org/altcha"
+- Release 2.3.0 "altcha-org/altcha-lib-php"
 - Release 2.2.0 "altcha-org/altcha-lib-php"
-
 
 1.0.5 [20.09.2026]
 - Release 3.2.3 "altcha-org/altcha" - Fix: add rel=noopener attribute to external links
