@@ -3,6 +3,7 @@ UNRELEASED
 
 
 
+- Release 3.4.1 "altcha-org/altcha" - •	Fix: regression in V1 challenge detection
 - Release 3.4.0 "altcha-org/altcha" - Fix: support the form attribute to associate the widget with a <form> it is not nested in
 
 1.0.6 [05.10.2026]
